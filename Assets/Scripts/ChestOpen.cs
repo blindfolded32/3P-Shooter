@@ -19,8 +19,8 @@ public class ChestOpen : MonoBehaviour
        GameObject Ammo = Instantiate(Ammo_Pack);
         HP.transform.position = Spawner.position;
         Ammo.transform.position = Spawner.position + (Vector3.one*2);
-        HP.GetComponent<Rigidbody>().AddForce(new Vector3 (Spawner.position.x, Spawner.position.y, Spawner.position.z ),ForceMode.Acceleration);
-        Ammo.GetComponent<Rigidbody>().AddForce(new Vector3(Spawner.position.x , Spawner.position.y , Spawner.position.z ), ForceMode.Acceleration);
+       // HP.GetComponent<Rigidbody>().AddForce(new Vector3 (Spawner.position.x, Spawner.position.y, Spawner.position.z ),ForceMode.Acceleration);
+        //Ammo.GetComponent<Rigidbody>().AddForce(new Vector3(Spawner.position.x , Spawner.position.y , Spawner.position.z ), ForceMode.Acceleration);
 
         Destroy(this);
         this.gameObject.SetActive(false);
