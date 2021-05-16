@@ -1,0 +1,11 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class WallDestroy : MonoBehaviour
+{
+   public void DestroyIt()
+    {
+        Destroy(gameObject);
+    }
+}
