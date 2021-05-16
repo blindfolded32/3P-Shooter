@@ -27,7 +27,7 @@ public class RollingBall : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        print("collision with" + collision.collider.name);
+      //  print("collision with" + collision.collider.name);
         // ball.GetComponent<Rigidbody>().AddForce(ball.transform.right, ForceMode.Impulse);
         ball.GetComponent<Rigidbody>().AddForce(new Vector3(Spawner.position.x , -10, Spawner.position.z ), ForceMode.Impulse);
     }

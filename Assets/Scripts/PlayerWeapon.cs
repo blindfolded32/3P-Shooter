@@ -29,7 +29,8 @@ public class PlayerWeapon : MonoBehaviour
         Physics.IgnoreCollision(Bullet.GetComponent<Collider>(), Spawner.parent.GetComponent<Collider>());
         Bullet.transform.position = Spawner.position;
         Vector3 rotation = Bullet.transform.rotation.eulerAngles;
-        Bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z); 
+        Bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+        print(Bullet.transform.rotation);
         Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
         StartCoroutine(DestroyBullet(Bullet, LifeTime));
         

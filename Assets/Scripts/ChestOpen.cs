@@ -15,15 +15,16 @@ public class ChestOpen : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
        _animator.SetBool("Open", true);
-       GameObject HP = Instantiate(HP_Pack);
-       GameObject Ammo = Instantiate(Ammo_Pack);
-        HP.transform.position = Spawner.position;
-        Ammo.transform.position = Spawner.position + (Vector3.one*2);
-       // HP.GetComponent<Rigidbody>().AddForce(new Vector3 (Spawner.position.x, Spawner.position.y, Spawner.position.z ),ForceMode.Acceleration);
-        //Ammo.GetComponent<Rigidbody>().AddForce(new Vector3(Spawner.position.x , Spawner.position.y , Spawner.position.z ), ForceMode.Acceleration);
-
+        PackSpawn();
         Destroy(this);
         this.gameObject.SetActive(false);
+    }
 
+    private void PackSpawn()
+    {
+        GameObject HP = Instantiate(HP_Pack);
+        GameObject Ammo = Instantiate(Ammo_Pack);
+        HP.transform.position = Spawner.position;
+        Ammo.transform.position = Spawner.position + (Vector3.one * 2);
     }
 }

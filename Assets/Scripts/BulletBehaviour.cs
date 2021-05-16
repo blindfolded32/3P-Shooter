@@ -9,5 +9,5 @@ public class BulletBehaviour : MonoBehaviour
        // print("HIT"+ other.name);
         Destroy(gameObject);
     }
-   
+
 }
