@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class DoorScript : MonoBehaviour
 {
-    private Animator animator;
+    private Animator _animator;
     private void Awake()
     {
-        animator = GetComponent<Animator>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        animator.SetBool("Open", true);
+        _animator.SetBool("Open", true);
     }
 }
