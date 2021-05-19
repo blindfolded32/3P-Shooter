@@ -1973,3 +1973,4 @@ Received Import Request.
 Start importing Assets/Prefab/Melee.prefab using Guid(0064f43e16bd5f24bb16a7ef64b78891) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'add8233d812771be52d306ac4ed98854') in 0.028964 seconds
   Import took 0.032217 seconds .
 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

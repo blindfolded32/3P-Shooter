@@ -2,39 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurrentBehaviour : MonoBehaviour
+public class TurretShooting : MonoBehaviour
 {
-    private float _minDistance = 300;
-    private float _speed = 1;
-    private Transform _playerPosition;
     public GameObject BulletPrefab;
     public Transform Spawner;
     public GameObject WeaponPrefab;
-    public float FireRate = 3F;
+    public float FireRate = 30F;
     public float BulletSpeed, LifeTime, NextShot;
-
-
-    void Start()
+    // Update is called once per frame
+    void Update()
     {
-        _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-    }
-
-    private void Update()
-    {
-        if (Vector3.Distance(transform.position,_playerPosition.position)< _minDistance)
+        if ( Time.time > FireRate+NextShot)
         {
-           Vector3 relative = _playerPosition.position - transform.position;
-           Vector3 newDir = Vector3.RotateTowards(transform.forward, relative*-1, _speed * Time.deltaTime, 0f);           
-           transform.rotation = Quaternion.LookRotation(newDir);
-
-            if (Time.time > FireRate + NextShot)
-            {
-                NextShot = Time.time + FireRate;
-                Shoot();
-            }
+            NextShot = Time.time + FireRate;
+            Shoot();
         }
-       
     }
+
+
+
     private void Shoot()
     {
         GameObject Bullet = Instantiate(BulletPrefab);
@@ -51,6 +37,4 @@ public class TurrentBehaviour : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(Bullet);
     }
-
-
 }

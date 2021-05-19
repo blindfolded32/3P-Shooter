@@ -7,7 +7,7 @@ public class PlayerWeapon : MonoBehaviour
     
     public GameObject BulletPrefab;
     public Transform Spawner;
-    public GameObject WeaponPrefab;
+    //public GameObject WeaponPrefab;
     public float FireRate =30F;
     public float BulletSpeed,LifeTime,NextShot;
     // Start is called before the first frame update
