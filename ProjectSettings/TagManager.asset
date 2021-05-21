@@ -12,6 +12,10 @@ TagManager:
   - AmmoRestore
   - SecretStairs
   - Bullet
+  - SmallHpPack
+  - SecretButton
+  - BossShield
+  - Shield
   layers:
   - Default
   - TransparentFX

@@ -7,15 +7,30 @@ public class SecretButton : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] GameObject Trap;
     [SerializeField] GameObject Safe;
+    private int counter;
 
-    private void OnCollisionEnter(Collision collision)
+    private void Awake()
     {
-        Trap.SetActive(false);
-        GameObject SafeOn = Instantiate(Safe);
+
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        Trap.SetActive(false);
+        if (GameObject.FindGameObjectsWithTag("SecretButton").Length == 0) DisableTrap();
+    }
+
+    /* private void OnTriggerEnter(Collider other)
+     {
+         Destroy(gameObject);
+         counter--;
+         print("Destroy"+counter+"more");
+         if (counter <= 0) { print("KABOOM"); DisableTrap(); }
+     }*/
+
+    private void DisableTrap()
+    {
+        //Trap.SetActive(false);
+        Destroy(Trap);
         GameObject SafeOn = Instantiate(Safe);
     }
 }

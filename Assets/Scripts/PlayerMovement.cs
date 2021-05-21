@@ -6,12 +6,17 @@ public class PlayerMovement : MonoBehaviour
 {
 
     private Rigidbody PlayerRB;
+    private int _maxHP = 100;    
+    private int _currentHP,_currentAmmo,_bulletIn;
     private CharacterController _MovementControl;
     private Vector3 _MoveDirection = Vector3.zero;
     public float MoveSpeed,JumpThrust,GravityForce,RotateSpeed;
     Vector3 euler;
-
-
+    private void Awake()
+    {
+        _currentHP = _maxHP;
+        _currentAmmo = 100;
+    }
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
@@ -23,12 +28,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()  
     {
-        Movement();
-        
+        Movement();        
         CamRot(); // вращение вышкой с ограничениями
-
+        if (_currentHP <= 0) { Destroy(gameObject); }
     }
-   
     private void CamRot()
     {
         euler.x -= Input.GetAxis("Mouse Y");
@@ -56,5 +59,19 @@ public class PlayerMovement : MonoBehaviour
         _MoveDirection.y -= GravityForce * Time.deltaTime * PlayerRB.mass * PlayerRB.mass;
         _MovementControl.Move(_MoveDirection * Time.deltaTime);
         transform.Rotate(0, Input.GetAxis("Horizontal"), 0);
+    ///   Input.Ge
     }
+    public void TakeDamage(int damage)
+    {
+        _currentHP -= damage;
+    }
+    public void GetAmmo(int bullet)
+    {
+        _currentAmmo += bullet;
+    }
+    public void RestoreHP(int HP)
+    {
+        _currentHP = Mathf.Clamp(_currentHP + HP,0,100);
+    }
+
 }

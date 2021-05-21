@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1471537686891656297}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.01, y: -2.154, z: -0.01}
+  m_LocalPosition: {x: -0.01, y: -1.23, z: -0.01}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4630871798252429517}
@@ -42,7 +42,6 @@ GameObject:
   - component: {fileID: 8206132189097762263}
   - component: {fileID: 2233184709340722483}
   - component: {fileID: 2871084069063196214}
-  - component: {fileID: 5112130729906921443}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -123,30 +122,11 @@ CapsuleCollider:
   m_GameObject: {fileID: 2874464942983701680}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2.0744526
   m_Direction: 1
   m_Center: {x: 0.000000047683717, y: -0.037226487, z: -0.00000009536744}
---- !u!114 &5112130729906921443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2874464942983701680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2173bd4e25315f41b6f0488211b110a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 4634442691787343706, guid: 5a3cb32ba5c6fff40af92b99836460ea, type: 3}
-  Spawner: {fileID: 4960438970614446144}
-  WeaponPrefab: {fileID: 0}
-  FireRate: 1
-  BulletSpeed: 100
-  LifeTime: 10
-  NextShot: 0
 --- !u!1 &4766592279662165277
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,8 +136,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1359675511931628276}
-  - component: {fileID: 293802845201840274}
   - component: {fileID: 5491310836536192258}
+  - component: {fileID: 1237322220845151631}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -181,7 +161,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &293802845201840274
+--- !u!65 &5491310836536192258
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4766592279662165277}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 15.713773, y: 9.827038, z: 27.375748}
+  m_Center: {x: -0.10119009, y: 9.682245, z: -5.832329}
+--- !u!114 &1237322220845151631
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,20 +186,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c60aea4ca85050a48bda974c8a61a270, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _minDistance: 50
---- !u!65 &5491310836536192258
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4766592279662165277}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 15.713773, y: 15.095764, z: 14.802292}
-  m_Center: {x: -0.10119009, y: 7.047882, z: 0.4543991}
+  BulletPrefab: {fileID: 4634442691787343706, guid: 5a3cb32ba5c6fff40af92b99836460ea, type: 3}
+  Spawner: {fileID: 4960438970614446144}
+  WeaponPrefab: {fileID: 2874464942983701680}
+  FireRate: 0.1
+  BulletSpeed: 900
+  LifeTime: 3
+  NextShot: 0
 --- !u!1 &7682818675981310906
 GameObject:
   m_ObjectHideFlags: 0

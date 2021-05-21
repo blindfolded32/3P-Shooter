@@ -16,8 +16,8 @@ public class ChestOpen : MonoBehaviour
     {
        _animator.SetBool("Open", true);
         PackSpawn();
-        Destroy(this);
-        this.gameObject.SetActive(false);
+        Destroy(gameObject);
+        
     }
 
     private void PackSpawn()
