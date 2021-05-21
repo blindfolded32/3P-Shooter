@@ -11,16 +11,21 @@ public class SecretButton : MonoBehaviour
 
     private void Awake()
     {
-        counter = GameObject.FindGameObjectsWithTag("SecretButton").Length;
+
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        Destroy(gameObject);
-        counter--;
-        print("Destroy"+counter+"more");
-        if (counter <= 0) { print("KABOOM"); DisableTrap(); }
+        if (GameObject.FindGameObjectsWithTag("SecretButton").Length == 0) DisableTrap();
     }
+
+    /* private void OnTriggerEnter(Collider other)
+     {
+         Destroy(gameObject);
+         counter--;
+         print("Destroy"+counter+"more");
+         if (counter <= 0) { print("KABOOM"); DisableTrap(); }
+     }*/
 
     private void DisableTrap()
     {

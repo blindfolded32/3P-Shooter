@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class RangedBehaviour : MonoBehaviour
 {
-    private int _currentHP, _bulletsIn;
-    private int _minDistance = 500;
+    private int _currentHP, _bulletsLeft;
+    private int _fireDistance = 200;
     public GameObject HP_Pack;
     public GameObject Ammo_pack;
     public Transform Spawner;
-    private float _speed = 1;
+    private float _speed = 2;
     private Transform _playerPosition;
     public GameObject BulletPrefab;
     public Transform bulletSpawner;
@@ -20,7 +20,7 @@ public class RangedBehaviour : MonoBehaviour
     void Awake()
     {
         _currentHP = 100;
-        _bulletsIn = 15;
+        _bulletsLeft = 15;
     }
     void Start()
     {
@@ -30,28 +30,31 @@ public class RangedBehaviour : MonoBehaviour
     {
 
         if (other.tag == "Bullet") _currentHP -= 10;
-    }
-    void Update()
-    {
-        if (Vector3.Distance(transform.position, _playerPosition.position) < _minDistance)
-        {
-            Vector3 relative = _playerPosition.position - transform.position;
-            Vector3 newDir = Vector3.RotateTowards(transform.forward, relative, _speed * Time.deltaTime, 0f);
-            transform.rotation = Quaternion.LookRotation(newDir);
-            if (Time.time > FireRate + NextShot)
-            {
-                NextShot = Time.time + FireRate;
-                Shoot();
-            }
-        }
 
         if (_currentHP <= 0)
         {
             print("ouch");
             Destroy(gameObject);
             PackSpawn();
-
         }
+    }
+    void Update()
+    {
+        if (Vector3.Distance(transform.position, _playerPosition.position) < _fireDistance)
+        {
+            rotateToPlayer();
+            if (Time.time > FireRate + NextShot)
+            {
+                NextShot = Time.time + FireRate;
+                Shoot();
+            }
+        }
+    }
+    private void rotateToPlayer()
+    {
+        Vector3 relative = _playerPosition.position - transform.position;
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, relative, _speed * Time.deltaTime, 0.0f);
+        transform.rotation = Quaternion.LookRotation(newDir);
     }
     private void Shoot()
     {
@@ -62,6 +65,12 @@ public class RangedBehaviour : MonoBehaviour
         Bullet.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
         Bullet.GetComponent<Rigidbody>().AddForce(bulletSpawner.forward * BulletSpeed, ForceMode.Impulse);
         StartCoroutine(DestroyBullet(Bullet, LifeTime));
+        _bulletsLeft--;
+        if (_bulletsLeft == 0)
+        {
+            NextShot += 2;
+            _bulletsLeft = 30;
+        }
 
     }
     private IEnumerator DestroyBullet(GameObject Bullet, float delay)//уничтожаем патрон через N секунд

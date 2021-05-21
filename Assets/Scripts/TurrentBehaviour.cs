@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TurrentBehaviour : MonoBehaviour
 {
-    private float _minDistance = 300;
+    private float _fireDistance = 300;
     private float _speed = 1;
     private Transform _playerPosition;
     public GameObject BulletPrefab;
@@ -21,7 +21,7 @@ public class TurrentBehaviour : MonoBehaviour
 
     private void Update()
     {
-        if (Vector3.Distance(transform.position,_playerPosition.position)< _minDistance)
+        if (Vector3.Distance(transform.position,_playerPosition.position)< _fireDistance)
         {
            Vector3 relative = _playerPosition.position - transform.position;
            Vector3 newDir = Vector3.RotateTowards(transform.forward, relative*-1, _speed * Time.deltaTime, 0f);           

@@ -12,13 +12,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _MoveDirection = Vector3.zero;
     public float MoveSpeed,JumpThrust,GravityForce,RotateSpeed;
     Vector3 euler;
-
     private void Awake()
     {
         _currentHP = _maxHP;
         _currentAmmo = 100;
     }
-
     void Start()
     {
         PlayerRB = GetComponent<Rigidbody>();
@@ -34,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
         CamRot(); // вращение вышкой с ограничениями
         if (_currentHP <= 0) { Destroy(gameObject); }
     }
-   
     private void CamRot()
     {
         euler.x -= Input.GetAxis("Mouse Y");

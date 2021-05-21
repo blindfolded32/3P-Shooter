@@ -8,6 +8,8 @@ public class BulletBehaviour : MonoBehaviour
     {
        // print("HIT"+ other.name);
         Destroy(gameObject);
+        if (other.tag == "SecretButton") Destroy(other.gameObject);
+        if (other.tag == "MeleeEnemy") other.GetComponent<Melee_Behaviour>().TakeDamage(5);
     }
 
 }
