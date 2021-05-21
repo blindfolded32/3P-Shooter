@@ -112,7 +112,7 @@ public class BossBehaviour : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            HP -= 2;
+            HP -= 4;
             print("Boss HP " +HP);
         }
     }
