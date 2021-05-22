@@ -25,7 +25,6 @@ public class ShieldDestruction : MonoBehaviour
              
             else  _currentHP = TakeDamage(5, _currentHP);
         }
-       
     }
 
     int TakeDamage(int damage, int currentHP)
