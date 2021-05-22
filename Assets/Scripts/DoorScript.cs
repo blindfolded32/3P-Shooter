@@ -12,6 +12,6 @@ public class DoorScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _animator.SetBool("Open", true);
+       if (other.tag == "Player") _animator.SetBool("Open", true);
     }
 }

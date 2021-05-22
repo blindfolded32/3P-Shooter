@@ -40,8 +40,8 @@ public class TurrentBehaviour : MonoBehaviour
         GameObject Bullet = Instantiate(BulletPrefab);
         Physics.IgnoreCollision(Bullet.GetComponent<Collider>(), Spawner.parent.GetComponent<Collider>());
         Bullet.transform.position = Spawner.position;
-        Vector3 rotation = Bullet.transform.rotation.eulerAngles;
-        Bullet.transform.rotation = Quaternion.Euler(rotation.x, rotation.y, rotation.z);
+       // Vector3 rotation = Bullet.transform.rotation.eulerAngles;
+        Bullet.transform.rotation = Quaternion.Euler(gameObject.transform.rotation.x+90, gameObject.transform.rotation.y, gameObject.transform.rotation.z);
         Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
         StartCoroutine(DestroyBullet(Bullet, LifeTime));
 

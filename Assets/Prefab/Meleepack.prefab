@@ -88,6 +88,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee
       objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 835534130868133173}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 835534130164436093}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
 --- !u!4 &835534129309551916 stripped
@@ -150,6 +162,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 835534129309551916}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 835534130164436093}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
 --- !u!4 &835534130868133173 stripped
@@ -212,6 +236,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Melee (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 835534129309551916}
+    - target: {fileID: 4026789151021661169, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
+      propertyPath: waypoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 835534130868133173}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0064f43e16bd5f24bb16a7ef64b78891, type: 3}
 --- !u!4 &835534130164436093 stripped

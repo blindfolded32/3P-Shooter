@@ -23,7 +23,12 @@ public class BossBehaviour : MonoBehaviour
     public float FireRate;
     public float fireDistance = 300F;
     public float BulletSpeed, LifeTime, NextShot,NextPhase;
-    private int _bulletsLeft = 300;
+    private int _bulletsLeft = 15;
+    //spawnopoint
+    [SerializeField] GameObject MeleePack, RangePack;
+    [SerializeField] Transform MeleeSpawn, RangeSpawn;
+    private bool _spawned = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +45,6 @@ public class BossBehaviour : MonoBehaviour
             if (!rangeWeaponPrefab.activeSelf) rangeWeaponPrefab.SetActive(true);
             melleeWeaponPrefab.SetActive(false);
             rangePhase();
-          //  print("i'm range");
             if (Time.time > _PhaseDuration + NextPhase)
             {
                 NextPhase = Time.time + _PhaseDuration;
@@ -72,8 +76,15 @@ public class BossBehaviour : MonoBehaviour
     }
     private void rangePhase()
     {
+        if (!_spawned)
+        {
+            Instantiate(MeleePack, MeleeSpawn);
+            Instantiate(RangePack, RangeSpawn);
+        }
+        _spawned = true;
         if (Vector3.Distance(transform.position, _playerPosition.position) < fireDistance)
         {
+            
             rotateToPlayer();
             if (Time.time > FireRate + NextShot)
             {
@@ -86,6 +97,11 @@ public class BossBehaviour : MonoBehaviour
     {
         rotateToPlayer();
         moveToPlayer();
+        _spawned = false;
+        if (Vector3.Distance(transform.position, _playerPosition.position) <= _minDistance + 5)
+        {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(15);
+        }
     }
     private void Shoot()
     {

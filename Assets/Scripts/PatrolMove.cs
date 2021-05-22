@@ -12,14 +12,20 @@ public class PatrolMove : MonoBehaviour
 
     void Start()
     {
+      //  waypoints[0].position = gameObject.transform.position;
         navMeshAgent.SetDestination(waypoints[0].position);
     }
 
     void Update()
     {
+       Goto();
+    }
+
+    void Goto()
+    {
         if (navMeshAgent.remainingDistance < navMeshAgent.stoppingDistance)
         {
-           // print("going to "+ waypoints[m_CurrentWaypointIndex].name);
+            // print("going to "+ waypoints[m_CurrentWaypointIndex].name);
             m_CurrentWaypointIndex = (m_CurrentWaypointIndex + 1) % waypoints.Length;
             navMeshAgent.SetDestination(waypoints[m_CurrentWaypointIndex].position);
         }

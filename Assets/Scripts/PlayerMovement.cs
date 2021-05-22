@@ -52,8 +52,8 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButton("Jump"))
             {
                 _MoveDirection.y = JumpThrust;
-                _MoveDirection.x /= 3;
-                _MoveDirection.z /= 3;
+                _MoveDirection.x /= 2;
+                _MoveDirection.z /= 2;
             }
         }
         _MoveDirection.y -= GravityForce * Time.deltaTime * PlayerRB.mass * PlayerRB.mass;

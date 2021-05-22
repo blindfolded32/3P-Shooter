@@ -141,7 +141,7 @@ OffMeshLink:
   m_AgentTypeID: 0
   m_Start: {fileID: 1514138414842143552}
   m_End: {fileID: 1514138416061490007}
-  m_CostOverride: -1
+  m_CostOverride: 1
   m_BiDirectional: 1
   m_Activated: 1
   m_AutoUpdatePositions: 1

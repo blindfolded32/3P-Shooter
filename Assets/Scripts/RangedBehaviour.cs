@@ -50,9 +50,6 @@ public class RangedBehaviour : MonoBehaviour
               _navMesh.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
            // NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
             _navMesh.SetDestination(_hit.position);
-            print("need to run to" + _navMesh.destination);
-            print("running to" + _hit.position);
-            
             rotateToPlayer();
             if (Time.time > FireRate + NextShot)
             {
