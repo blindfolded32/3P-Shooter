@@ -14,34 +14,34 @@ public class Melee_Behaviour : MonoBehaviour
     public GameObject Ammo_pack;
     public Transform Spawner;
     private int _minDistance = 20;
+    
     private int _maxDistance = 200;
-
+    private Animator _animator;
     private Transform _playerPosition;
 
 
-   /* private void Awake()
-    {
-       // _enemyTarget = GameObject.FindGameObjectWithTag("Player").transform;
-        //navMeshAgent.SetDestination(_enemyTarget.position);
-    }*/
     void Start()
     {
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-       
+        _animator = GetComponentInChildren<Animator>();//GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        if (Vector3.Distance(transform.position, _playerPosition.position) > _minDistance && Vector3.Distance(transform.position, _playerPosition.position) < _maxDistance) { print("I see you "+ gameObject.name); navMeshAgent.SetDestination(_playerPosition.position); }
-        /*  {
-              Vector3 relative = _playerPosition.position - transform.position;
-              Vector3 newDir = Vector3.RotateTowards(transform.forward, relative, _speed * Time.deltaTime, 0f);
-              transform.rotation = Quaternion.LookRotation(newDir);
-              transform.position = Vector3.MoveTowards(transform.position, _playerPosition.position, 0.2f);
-          }*/
 
+        if (Vector3.Distance(transform.position, _playerPosition.position) > _minDistance && Vector3.Distance(transform.position, _playerPosition.position) < _maxDistance)
+        {
+            print("I see you " + gameObject.name);
+            navMeshAgent.SetDestination(_playerPosition.position);
+            if (Vector3.Distance(transform.position, _playerPosition.position) <= _maxDistance + 5)
+            {
+               _animator.SetBool("Attack", true);
+              //  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(0);
+            }
+        }
+       else  _animator.SetBool("Attack", false);
     }
 public void TakeDamage(int damage)
     {
