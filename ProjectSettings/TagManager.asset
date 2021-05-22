@@ -16,6 +16,7 @@ TagManager:
   - SecretButton
   - BossShield
   - Shield
+  - LavaFloor
   layers:
   - Default
   - TransparentFX
