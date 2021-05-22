@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class RangedBehaviour : MonoBehaviour
 {
     private int _currentHP, _bulletsLeft;
@@ -10,12 +10,14 @@ public class RangedBehaviour : MonoBehaviour
     public GameObject Ammo_pack;
     public Transform Spawner;
     private float _speed = 2;
-    private Transform _playerPosition;
+    private Transform _playerPosition, _HighPos;
+
     public GameObject BulletPrefab;
     public Transform bulletSpawner;
     public GameObject WeaponPrefab;
     public float FireRate = 3F;
     public float BulletSpeed, LifeTime, NextShot;
+    [SerializeField] private NavMeshAgent _navMesh;
     // Start is called before the first frame update
     void Awake()
     {
@@ -25,6 +27,7 @@ public class RangedBehaviour : MonoBehaviour
     void Start()
     {
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+       _HighPos = GameObject.FindGameObjectWithTag("HighGround").transform;
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -42,6 +45,11 @@ public class RangedBehaviour : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _playerPosition.position) < _fireDistance)
         {
+            _navMesh.SetDestination(_HighPos.position);
+            
+            print("need to run to" + _navMesh.destination);
+            print("running to" + _HighPos.position);
+            
             rotateToPlayer();
             if (Time.time > FireRate + NextShot)
             {
