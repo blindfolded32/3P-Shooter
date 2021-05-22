@@ -33,7 +33,7 @@ public class RangedBehaviour : MonoBehaviour
 
         if (_currentHP <= 0)
         {
-            print("ouch");
+           // print("ouch");
             Destroy(gameObject);
             PackSpawn();
         }
