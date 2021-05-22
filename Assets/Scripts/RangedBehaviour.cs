@@ -27,7 +27,8 @@ public class RangedBehaviour : MonoBehaviour
     void Start()
     {
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-       _HighPos = GameObject.FindGameObjectWithTag("HighGround").transform;
+       //_HighPos = GameObject.FindGameObjectWithTag("HighGround").transform;
+       var HGMask = 3 << NavMesh.GetAreaFromName("HG");
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -45,10 +46,12 @@ public class RangedBehaviour : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, _playerPosition.position) < _fireDistance)
         {
-            _navMesh.SetDestination(_HighPos.position);
-            
+            //  _navMesh.SetDestination(_HighPos.position);
+              _navMesh.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
+           // NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
+            _navMesh.SetDestination(_hit.position);
             print("need to run to" + _navMesh.destination);
-            print("running to" + _HighPos.position);
+            print("running to" + _hit.position);
             
             rotateToPlayer();
             if (Time.time > FireRate + NextShot)
