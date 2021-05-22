@@ -6,6 +6,6 @@ public class Lava_death : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<PlayerMovement>().TakeDamage(100);
+       if (other.tag =="Player") other.GetComponent<PlayerMovement>().TakeDamage(100);
     }
 }
