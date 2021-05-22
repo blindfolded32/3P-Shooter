@@ -31,7 +31,7 @@ public class ShieldDestruction : MonoBehaviour
     int TakeDamage(int damage, int currentHP)
     {
         currentHP -= damage;
-        print(gameObject.tag +" "+ currentHP);
+      //  print(gameObject.tag +" "+ currentHP);
         if (currentHP <= 0) Destroy(gameObject);
         return currentHP;
     }

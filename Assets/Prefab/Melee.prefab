@@ -585,6 +585,7 @@ MonoBehaviour:
   HP_Pack: {fileID: 411513485070868841, guid: c98505f41984a8f43bfc6e8dc8a60554, type: 3}
   Ammo_pack: {fileID: 3486801977385818285, guid: dabf310f8d5c46c4cab0c13ef825bb5b, type: 3}
   Spawner: {fileID: 2891355719076475534}
+  navMeshAgent: {fileID: 5967861733445799747}
 --- !u!195 &5967861733445799747
 NavMeshAgent:
   m_ObjectHideFlags: 0
