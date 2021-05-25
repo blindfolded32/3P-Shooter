@@ -601,7 +601,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTarget: {fileID: 8137281786601131187, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-  navMeshAgent: {fileID: 5967861733445799747}
   HP: 100
   HP_Pack: {fileID: 411513485070868841, guid: c98505f41984a8f43bfc6e8dc8a60554, type: 3}
   Ammo_pack: {fileID: 3486801977385818285, guid: dabf310f8d5c46c4cab0c13ef825bb5b, type: 3}
