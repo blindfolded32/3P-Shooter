@@ -6774,36 +6774,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 779224871}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &793356683 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 101222439081345930, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}
-  m_PrefabInstance: {fileID: 1114202944493389734}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &793356684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793356683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2c671d97b92e694792b39b5d885cf12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!65 &793356685
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 793356683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 6.413574, y: 24.377144, z: 12.389191}
-  m_Center: {x: 5.597992, y: 20.426758, z: -0.13041687}
 --- !u!1 &805372536
 GameObject:
   m_ObjectHideFlags: 0
@@ -17794,10 +17764,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bomb
       objectReference: {fileID: 0}
-    - target: {fileID: 101222439081345930, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}
-      propertyPath: m_TagString
-      value: DestroyDoor1
-      objectReference: {fileID: 0}
     - target: {fileID: 2027990444618411766, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17841,10 +17807,6 @@ PrefabInstance:
     - target: {fileID: 2027990444618411766, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5087184084035837315, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}
-      propertyPath: m_Radius
-      value: 51.79946
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92bc9ac0ae98b3549978627a37adfd9a, type: 3}

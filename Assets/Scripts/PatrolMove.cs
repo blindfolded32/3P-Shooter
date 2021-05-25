@@ -9,6 +9,7 @@ public class PatrolMove : MonoBehaviour
     public Transform[] waypoints;
     private Transform _playerPosition;
     private Animator _animator;
+    private int HGMask;
 
     int m_CurrentWaypointIndex;
 
@@ -18,6 +19,7 @@ public class PatrolMove : MonoBehaviour
         navMeshAgent.SetDestination(waypoints[0].position);
         _animator = gameObject.GetComponentInChildren<Animator>();
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        HGMask = 3 << NavMesh.GetAreaFromName("HG");
     }
 
     void Update()
@@ -26,7 +28,7 @@ public class PatrolMove : MonoBehaviour
         if (Vector3.Distance(transform.position, _playerPosition.position) < 300 * navMeshAgent.radius)
         {
             if (gameObject.tag == "MeleeEnemy") MelleeBeh();
-
+            else RangeBeh();
         }
         
     }
@@ -41,19 +43,31 @@ public class PatrolMove : MonoBehaviour
         }
     }
 
+    void RangeBeh()
+    {
+        if (Vector3.Distance(transform.position, _playerPosition.position) < 300)
+        {
+            //  _navMesh.SetDestination(_HighPos.position);
+            //navMeshAgent.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
+            NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
+            navMeshAgent.SetDestination(_hit.position);
+            print("going" + navMeshAgent.destination + "hit" + _hit.position);
+        }
+    }
+
     void MelleeBeh()
     {   
-            print("I see you " + gameObject.name);
+            //print("I see you " + gameObject.name);
             navMeshAgent.SetDestination(_playerPosition.position);
             if (Vector3.Distance(transform.position, _playerPosition.position) <= 100) //* navMeshAgent.radius )
             {
-            _animator.SetBool("Attack", true);
-            print(_animator.GetBool("Attack"));
+            gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
+            print(_animator.GetBool("Attack")+ "name"+ _animator.name);
                
                 //  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(0);
             }
-        print(_animator.GetBool("Attack"));
-        _animator.SetBool("Attack", false);
+        //print(_animator.GetBool("Attack"));
+        else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
 
     }
 }
