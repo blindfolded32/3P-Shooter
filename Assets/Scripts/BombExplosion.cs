@@ -9,18 +9,24 @@ public class BombExplosion : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-      
-     //   boom.DestroyIt();
-        gameObject.GetComponent<SphereCollider>().isTrigger=true;
+
+        //   boom.DestroyIt();
         gameObject.GetComponent<BoxCollider>().enabled = false;
+        gameObject.GetComponent<SphereCollider>().enabled = true;
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        
+    
+        //gameObject.GetComponent<SphereCollider>().isTrigger =true;
         // Triggered.Add(other.gameObject);
         // foreach (GameObject Bommbed in Triggered) 
         if (other.tag != "Bullet")
         {
-            other.GetComponent<Rigidbody>().AddForce(new Vector3(other.transform.position.x * -100, 50, other.transform.position.z * -10), ForceMode.VelocityChange);
+            other.GetComponent<Rigidbody>().AddForce(new Vector3 (gameObject.transform.position.x, 550,gameObject.transform.position.z) *10, ForceMode.Impulse);
             print(other.name + " " + other.GetComponent<Rigidbody>().velocity);
         }
-        //Destroy(gameObject);
+        Destroy(gameObject);
 
     }
 }
