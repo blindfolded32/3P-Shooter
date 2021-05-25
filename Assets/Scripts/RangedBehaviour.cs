@@ -10,14 +10,14 @@ public class RangedBehaviour : MonoBehaviour
     public GameObject Ammo_pack;
     public Transform Spawner;
     private float _speed = 2;
-    private Transform _playerPosition, _HighPos;
+    private Transform _playerPosition;
 
     public GameObject BulletPrefab;
     public Transform bulletSpawner;
     public GameObject WeaponPrefab;
     public float FireRate = 3F;
     public float BulletSpeed, LifeTime, NextShot;
-    [SerializeField] private NavMeshAgent _navMesh;
+   
     // Start is called before the first frame update
     void Awake()
     {
@@ -28,7 +28,7 @@ public class RangedBehaviour : MonoBehaviour
     {
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
        //_HighPos = GameObject.FindGameObjectWithTag("HighGround").transform;
-       var HGMask = 3 << NavMesh.GetAreaFromName("HG");
+   
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -45,11 +45,7 @@ public class RangedBehaviour : MonoBehaviour
     void Update()
     {
         if (Vector3.Distance(transform.position, _playerPosition.position) < _fireDistance)
-        {
-            //  _navMesh.SetDestination(_HighPos.position);
-              _navMesh.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
-           // NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
-            _navMesh.SetDestination(_hit.position);
+        {  
             rotateToPlayer();
             if (Time.time > FireRate + NextShot)
             {
