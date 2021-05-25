@@ -1,13 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Melee_Behaviour : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private Transform _enemyTarget;
-    [SerializeField] private NavMeshAgent navMeshAgent;
+//    [SerializeField] private NavMeshAgent navMeshAgent;
     public float HP=100;
    // private float _speed = 1;
     public GameObject HP_Pack;
@@ -22,8 +19,8 @@ public class Melee_Behaviour : MonoBehaviour
 
     void Start()
     {
-        _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        _animator = GetComponentInChildren<Animator>();//GetComponent<Animator>();
+        //_playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
+        //_animator = GetComponentInChildren<Animator>();//GetComponent<Animator>();
 
     }
 
@@ -31,17 +28,7 @@ public class Melee_Behaviour : MonoBehaviour
     void Update()
     {
 
-        if (Vector3.Distance(transform.position, _playerPosition.position) > _minDistance && Vector3.Distance(transform.position, _playerPosition.position) < _maxDistance)
-        {
-            print("I see you " + gameObject.name);
-            navMeshAgent.SetDestination(_playerPosition.position);
-            if (Vector3.Distance(transform.position, _playerPosition.position) <= _maxDistance + 5)
-            {
-               _animator.SetBool("Attack", true);
-              //  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(0);
-            }
-        }
-       else  _animator.SetBool("Attack", false);
+        
     }
 public void TakeDamage(int damage)
     {

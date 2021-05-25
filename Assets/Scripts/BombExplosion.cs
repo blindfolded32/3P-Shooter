@@ -9,13 +9,18 @@ public class BombExplosion : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        print("Boom");
+      
      //   boom.DestroyIt();
         gameObject.GetComponent<SphereCollider>().isTrigger=true;
-        Triggered.Add(other.gameObject);
-        foreach (GameObject Bommbed in Triggered) Bommbed.GetComponent<Rigidbody>().AddForce(new Vector3(Bommbed.transform.position.x * -1, 50, Bommbed.transform.position.z * -1), ForceMode.Impulse);
-
-        Destroy(gameObject);
+        gameObject.GetComponent<BoxCollider>().enabled = false;
+        // Triggered.Add(other.gameObject);
+        // foreach (GameObject Bommbed in Triggered) 
+        if (other.tag != "Bullet")
+        {
+            other.GetComponent<Rigidbody>().AddForce(new Vector3(other.transform.position.x * -100, 50, other.transform.position.z * -10), ForceMode.VelocityChange);
+            print(other.name + " " + other.GetComponent<Rigidbody>().velocity);
+        }
+        //Destroy(gameObject);
 
     }
 }
