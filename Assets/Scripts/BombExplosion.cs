@@ -17,7 +17,6 @@ public class BombExplosion : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         
-    
         //gameObject.GetComponent<SphereCollider>().isTrigger =true;
         // Triggered.Add(other.gameObject);
         // foreach (GameObject Bommbed in Triggered) 

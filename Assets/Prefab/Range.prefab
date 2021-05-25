@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 8551379189165652688}
   - component: {fileID: 2902090513988157094}
   - component: {fileID: 7784939753402498360}
+  - component: {fileID: 2756382164182872097}
   m_Layer: 0
   m_Name: Range
   m_TagString: RangeEnemy
@@ -337,7 +338,6 @@ MonoBehaviour:
   BulletSpeed: 800
   LifeTime: 3
   NextShot: 0
-  _navMesh: {fileID: 2902090513988157094}
 --- !u!195 &2902090513988157094
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -377,6 +377,25 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+--- !u!95 &2756382164182872097
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1002539363129307120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1002539363401087230
 GameObject:
   m_ObjectHideFlags: 0

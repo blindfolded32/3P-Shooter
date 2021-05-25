@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 8
+    agentRadius: 4
     agentHeight: 23
     agentSlope: 45
     agentClimb: 5
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 25
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 2.6666667
+    cellSize: 1.3333334
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -13791,18 +13791,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
       propertyPath: waypoints.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
       propertyPath: waypoints.Array.data[0]
       value: 
-      objectReference: {fileID: 296860157}
+      objectReference: {fileID: 1737752231}
     - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
       propertyPath: waypoints.Array.data[1]
       value: 
       objectReference: {fileID: 130129310}
     - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
       propertyPath: waypoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 820836729}
+    - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
+      propertyPath: waypoints.Array.data[3]
       value: 
       objectReference: {fileID: 820836729}
     m_RemovedComponents: []
@@ -14518,6 +14522,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706999208}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1737752231 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1514138416061490007, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
+  m_PrefabInstance: {fileID: 1514138414431499417}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1742496107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1514138416009336857, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
@@ -17826,6 +17835,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 18065743}
     m_Modifications:
+    - target: {fileID: 856107112, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1514138416009336857, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -17873,6 +17886,14 @@ PrefabInstance:
     - target: {fileID: 1514138416009337062, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
       propertyPath: m_Name
       value: HightGround
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514138416061490007, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1514138416061490007, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca2c009dadeff9c409100c34a05b933c, type: 3}

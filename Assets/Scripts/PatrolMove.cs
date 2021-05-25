@@ -48,8 +48,8 @@ public class PatrolMove : MonoBehaviour
         if (Vector3.Distance(transform.position, _playerPosition.position) < 300)
         {
             //  _navMesh.SetDestination(_HighPos.position);
-            //navMeshAgent.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
-            NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
+            navMeshAgent.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
+            //NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
             navMeshAgent.SetDestination(_hit.position);
             print("going" + navMeshAgent.destination + "hit" + _hit.position);
         }
