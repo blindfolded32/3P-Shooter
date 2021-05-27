@@ -12,9 +12,7 @@ public class CameraRotatation : MonoBehaviour
     public float hideDistance = 2f;
     private Vector3 _localPosition;
     private float _currentYRotation;
-   
-
-    private Vector3 _position
+    private Vector3 CurrentPosition
     {
         get { return transform.position; }
         set { transform.position = value; }
@@ -22,17 +20,15 @@ public class CameraRotatation : MonoBehaviour
 
     void Start()
     {
-        _localPosition = target.InverseTransformPoint(_position);
+        _localPosition = target.InverseTransformPoint(CurrentPosition);
     }
 
     void LateUpdate()
     {
-        _position = target.TransformPoint(_localPosition);
+        CurrentPosition = target.TransformPoint(_localPosition);
         CameraRotation();
-       
-        _localPosition = target.InverseTransformPoint(_position);
+        _localPosition = target.InverseTransformPoint(CurrentPosition);
     }
-
     void CameraRotation()
     {
         if (Input.GetAxis("Mouse Y") != 0)
