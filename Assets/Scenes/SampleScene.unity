@@ -13789,6 +13789,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2756382164182872097, guid: af97386b868289f4ab34503a82d3a802, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7784939753402498360, guid: af97386b868289f4ab34503a82d3a802, type: 3}
       propertyPath: waypoints.Array.size
       value: 4
@@ -18040,12 +18044,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8137281786601131184, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Constraints
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131184, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Interpolate
-      value: 2
+      propertyPath: m_IsKinematic
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8137281786601131187, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: m_RootOrder
@@ -18057,7 +18057,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8137281786601131187, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.7
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 8137281786601131187, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18094,22 +18094,6 @@ PrefabInstance:
     - target: {fileID: 8137281786601131191, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131213, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Height
-      value: 35.70213
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131213, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Radius
-      value: 7.2356462
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131213, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Center.x
-      value: -0.20551395
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131213, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Center.y
-      value: 11.737883
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}

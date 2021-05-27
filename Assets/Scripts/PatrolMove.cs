@@ -51,7 +51,7 @@ public class PatrolMove : MonoBehaviour
             navMeshAgent.SamplePathPosition(NavMesh.GetAreaFromName("HG"), 300, out NavMeshHit _hit);
             //NavMesh.FindClosestEdge(gameObject.transform.position, out NavMeshHit _hit, 3);
             navMeshAgent.SetDestination(_hit.position);
-            print("going" + navMeshAgent.destination + "hit" + _hit.position);
+            //print("going" + navMeshAgent.destination + "hit" + _hit.position);
         }
     }
 
@@ -62,7 +62,7 @@ public class PatrolMove : MonoBehaviour
             if (Vector3.Distance(transform.position, _playerPosition.position) <= 100) //* navMeshAgent.radius )
             {
             gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
-            print(_animator.GetBool("Attack")+ "name"+ _animator.name);
+           // print(_animator.GetBool("Attack")+ "name"+ _animator.name);
                
                 //  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(0);
             }
