@@ -10,26 +10,7 @@ public class Melee_Behaviour : MonoBehaviour
     public GameObject HP_Pack;
     public GameObject Ammo_pack;
     public Transform Spawner;
-    private int _minDistance = 20;
-    
-    private int _maxDistance = 200;
-    private Animator _animator;
-    private Transform _playerPosition;
-
-
-    void Start()
-    {
-        //_playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
-        //_animator = GetComponentInChildren<Animator>();//GetComponent<Animator>();
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-        
-    }
+   
 public void TakeDamage(int damage)
     {
         HP -= damage;
@@ -39,8 +20,7 @@ public void TakeDamage(int damage)
             PackSpawn();
         }
     }
-
-    private void PackSpawn()
+private void PackSpawn()
     {
         GameObject HP = Instantiate(HP_Pack);
         GameObject Ammo = Instantiate(Ammo_pack);

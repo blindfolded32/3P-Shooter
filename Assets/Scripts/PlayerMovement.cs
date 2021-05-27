@@ -12,8 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 _MoveDirection = Vector3.zero;
     public float MoveSpeed,JumpThrust,GravityForce,RotateSpeed;
     private Animator _animator;
-    Vector3 euler;
-
     //
     public GameObject BulletPrefab;
     public Transform Spawner;
@@ -30,26 +28,18 @@ public class PlayerMovement : MonoBehaviour
         PlayerRB = GetComponent<Rigidbody>();
         _MovementControl = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
-       // Cursor.lockState = CursorLockMode.Locked;
-        
-
+       Cursor.lockState = CursorLockMode.Locked;
     }
     // Update is called once per frame
     void Update()  
     {
-        Movement();        
-       // CamRot(); // вращение вышкой с ограничениями
-        if (_currentHP <= 0) { Destroy(gameObject); }
-
+        Movement();  
         if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
         {
             _animator.SetBool("Shot", true);
-           
             NextShot = Time.time + FireRate;
         }
-
     }
-    
     private void Movement()
     {
         if (_MovementControl.isGrounded)
@@ -79,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+        if (_currentHP <= 0) { Destroy(gameObject); }
     }
     public void GetAmmo(int bullet)
     {
@@ -88,28 +79,28 @@ public class PlayerMovement : MonoBehaviour
     {
         _currentHP = Mathf.Clamp(_currentHP + HP,0,100);
     }
-
-
     private void Shoot()
     {
-       // print("want to shot");
-        GameObject Bullet = Instantiate(BulletPrefab);
-                Physics.IgnoreCollision(Bullet.GetComponent<Collider>(), Spawner.parent.GetComponent<Collider>());
-                Bullet.transform.position = Spawner.position;
-                Vector3 rotation = Bullet.transform.rotation.eulerAngles;
-                Bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
-                Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
-                StartCoroutine(DestroyBullet(Bullet, LifeTime));
-                _bulletsIn--;
-                _currentAmmo--;
-                if (_bulletsIn == 0)
-                {
-                    NextShot += 2;
-                    _bulletsIn = 10;
-                }
-        _animator.SetBool("Shot", false);
+        if (_currentAmmo > 0)
+        {
+            GameObject Bullet = Instantiate(BulletPrefab);
+            Physics.IgnoreCollision(Bullet.GetComponent<Collider>(), Spawner.parent.GetComponent<Collider>());
+            Bullet.transform.position = Spawner.position;
+            Vector3 rotation = Bullet.transform.rotation.eulerAngles;
+            Bullet.transform.rotation = Quaternion.Euler(rotation.x, transform.eulerAngles.y, rotation.z);
+            Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
+            StartCoroutine(DestroyBullet(Bullet, LifeTime));
+            _bulletsIn--;
+            _currentAmmo--;
+            if (_bulletsIn == 0)
+            {
+                NextShot += 2;
+                _bulletsIn = 10;
+            }
+            _animator.SetBool("Shot", false);
+        }
     }
-    private IEnumerator DestroyBullet(GameObject Bullet, float delay)//уничтожаем патрон через N секунд
+    private IEnumerator DestroyBullet(GameObject Bullet, float delay)
     {
         yield return new WaitForSeconds(delay);
         Destroy(Bullet);

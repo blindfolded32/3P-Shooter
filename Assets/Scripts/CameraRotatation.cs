@@ -8,14 +8,11 @@ public class CameraRotatation : MonoBehaviour
     public Transform target;
     public float speedX = 360f;
     public float speedy = 240f;
-    public float limitY = 40f;
     public float minDistance = 1.5f;
     public float hideDistance = 2f;
     private Vector3 _localPosition;
     private float _currentYRotation;
-   
-
-    private Vector3 _position
+    private Vector3 CurrentPosition
     {
         get { return transform.position; }
         set { transform.position = value; }
@@ -23,25 +20,20 @@ public class CameraRotatation : MonoBehaviour
 
     void Start()
     {
-        _localPosition = target.InverseTransformPoint(_position);
+        _localPosition = target.InverseTransformPoint(CurrentPosition);
     }
 
     void LateUpdate()
     {
-        _position = target.TransformPoint(_localPosition);
+        CurrentPosition = target.TransformPoint(_localPosition);
         CameraRotation();
-       
-        _localPosition = target.InverseTransformPoint(_position);
+        _localPosition = target.InverseTransformPoint(CurrentPosition);
     }
-
     void CameraRotation()
     {
-        var mx = Input.GetAxis("Mouse X");
-        var my = Input.GetAxis("Mouse Y");
-
-        if (my != 0)
+        if (Input.GetAxis("Mouse Y") != 0)
         {
-            var tmp = Mathf.Clamp(_currentYRotation + my * speedy * Time.deltaTime, -limitY, limitY);
+            var tmp = Mathf.Clamp(_currentYRotation + Input.GetAxis("Mouse Y") * speedy * Time.deltaTime, -40, 90);
             if (tmp != _currentYRotation)
             {
                 var rot = tmp - _currentYRotation;
@@ -49,11 +41,10 @@ public class CameraRotatation : MonoBehaviour
                 _currentYRotation = tmp;
             }
         }
-        if (mx != 0)
+        if (Input.GetAxis("Mouse X") != 0)
         {
-            transform.RotateAround(target.position, Vector3.up, mx * speedX * Time.deltaTime);
+            transform.RotateAround(target.position, Vector3.up, Input.GetAxis("Mouse X") * speedX * Time.deltaTime);
         }
-
         transform.LookAt(target);
     }
 
