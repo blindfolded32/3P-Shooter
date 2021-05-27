@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody PlayerRB;
     private int _maxHP = 100;    
-    private int _currentHP,_currentAmmo,_bulletIn;
+    private int _currentHP,_currentAmmo;
     private CharacterController _MovementControl;
     private Vector3 _MoveDirection = Vector3.zero;
     public float MoveSpeed,JumpThrust,GravityForce,RotateSpeed;
@@ -31,14 +31,14 @@ public class PlayerMovement : MonoBehaviour
         _MovementControl = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
        // Cursor.lockState = CursorLockMode.Locked;
-        euler = transform.localEulerAngles;
+        
 
     }
     // Update is called once per frame
     void Update()  
     {
         Movement();        
-        CamRot(); // вращение вышкой с ограничениями
+       // CamRot(); // вращение вышкой с ограничениями
         if (_currentHP <= 0) { Destroy(gameObject); }
 
         if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
@@ -49,16 +49,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
-    private void CamRot()
-    {
-        euler.x -= Input.GetAxis("Mouse Y");
-        euler.x = Mathf.Clamp(euler.x, -20.0f, 25.0f);
-
-        euler.y += Input.GetAxis("Mouse X");
-        euler.y = Mathf.Clamp(euler.y, 150.0f, 220.0f);
-
-        Camera.main.transform.localEulerAngles = euler;
-    }
+    
     private void Movement()
     {
         if (_MovementControl.isGrounded)
@@ -101,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Shoot()
     {
-        print("want to shot");
+       // print("want to shot");
         GameObject Bullet = Instantiate(BulletPrefab);
                 Physics.IgnoreCollision(Bullet.GetComponent<Collider>(), Spawner.parent.GetComponent<Collider>());
                 Bullet.transform.position = Spawner.position;
@@ -110,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
                 Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
                 StartCoroutine(DestroyBullet(Bullet, LifeTime));
                 _bulletsIn--;
+                _currentAmmo--;
                 if (_bulletsIn == 0)
                 {
                     NextShot += 2;
