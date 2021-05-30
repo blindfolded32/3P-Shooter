@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class Melee_Behaviour : MonoBehaviour
 {
-    // Start is called before the first frame update
+  
     [SerializeField] private Transform _enemyTarget;
-//    [SerializeField] private NavMeshAgent navMeshAgent;
     public float HP=100;
-   // private float _speed = 1;
-    public GameObject HP_Pack;
-    public GameObject Ammo_pack;
+    public GameObject HP_Pack,Ammo_pack;
     public Transform Spawner;
-   
 public void TakeDamage(int damage)
     {
         HP -= damage;

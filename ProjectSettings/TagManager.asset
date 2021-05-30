@@ -18,6 +18,7 @@ TagManager:
   - Shield
   - LavaFloor
   - HighGround
+  - Ball
   layers:
   - Default
   - TransparentFX

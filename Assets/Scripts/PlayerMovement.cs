@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public HealthBar healthBar;
+    //
     private Rigidbody PlayerRB;
     private int _maxHP = 100;    
     private int _currentHP,_currentAmmo;
@@ -22,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _currentHP = _maxHP;
         _currentAmmo = 100;
+        healthBar.SetMaxHealth(_maxHP);
     }
     void Start()
     {
@@ -69,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+        healthBar.SetHealth(_currentHP);
         if (_currentHP <= 0) { Destroy(gameObject); }
     }
     public void GetAmmo(int bullet)
@@ -78,6 +82,7 @@ public class PlayerMovement : MonoBehaviour
     public void RestoreHP(int HP)
     {
         _currentHP = Mathf.Clamp(_currentHP + HP,0,100);
+        healthBar.SetHealth(_currentHP);
     }
     private void Shoot()
     {

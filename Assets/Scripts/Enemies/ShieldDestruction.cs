@@ -5,25 +5,19 @@ using UnityEngine;
 public class ShieldDestruction : MonoBehaviour
 {
     private int _shieldHP = 30;
-    private int _bossShieldHp = 50;
+   // private int _bossShieldHp = 30;
     private int _currentHP;
 
     void Awake()
     {
-        if (gameObject.tag == "BossShield")
-        {
-            _currentHP = _bossShieldHp;
-        }
-        else _currentHP = _shieldHP;
+         _currentHP = _shieldHP;
         }
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Bullet")
+        if (other.CompareTag("Bullet"))
         {
-            if (gameObject.tag == "BossShield") _currentHP = TakeDamage(5, _currentHP);
-             
-            else  _currentHP = TakeDamage(5, _currentHP);
+           _currentHP = TakeDamage(5, _currentHP);
         }
     }
 
