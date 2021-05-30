@@ -43,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetBool("Shot", true);
             NextShot = Time.time + FireRate;
+            print(_animator.GetBool("Shot"));
         }
+        
     }
     private void Movement()
     {
@@ -99,18 +101,16 @@ public class PlayerMovement : MonoBehaviour
             Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
             StartCoroutine(DestroyBullet(Bullet, LifeTime));
             _bulletsIn--;
-            
             if (_bulletsIn == 0)
             {
                 NextShot += 2;
                 _bulletsIn = 10;
                 _currentAmmo-=10;
             }
-            _animator.SetBool("Shot", false);
         }
-        
+        _animator.SetBool("Shot", false);
         ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
-        
+        print(_animator.GetBool("Shot"));
     }
     private IEnumerator DestroyBullet(GameObject Bullet, float delay)
     {
