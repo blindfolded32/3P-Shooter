@@ -5,6 +5,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
+    public HealthBar healthBar;
+    public AmmoText ammoText;
+    //
     private Rigidbody PlayerRB;
     private int _maxHP = 100;    
     private int _currentHP,_currentAmmo;
@@ -22,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _currentHP = _maxHP;
         _currentAmmo = 100;
+        healthBar.SetMaxHealth(_maxHP);
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
     }
     void Start()
     {
@@ -38,7 +43,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetBool("Shot", true);
             NextShot = Time.time + FireRate;
+            print(_animator.GetBool("Shot"));
         }
+        
     }
     private void Movement()
     {
@@ -69,15 +76,18 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         _currentHP -= damage;
+        healthBar.SetHealth(_currentHP);
         if (_currentHP <= 0) { Destroy(gameObject); }
     }
     public void GetAmmo(int bullet)
     {
         _currentAmmo += bullet;
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
     }
     public void RestoreHP(int HP)
     {
         _currentHP = Mathf.Clamp(_currentHP + HP,0,100);
+        healthBar.SetHealth(_currentHP);
     }
     private void Shoot()
     {
@@ -91,14 +101,16 @@ public class PlayerMovement : MonoBehaviour
             Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
             StartCoroutine(DestroyBullet(Bullet, LifeTime));
             _bulletsIn--;
-            _currentAmmo--;
             if (_bulletsIn == 0)
             {
                 NextShot += 2;
                 _bulletsIn = 10;
+                _currentAmmo-=10;
             }
-            _animator.SetBool("Shot", false);
         }
+        _animator.SetBool("Shot", false);
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
+        print(_animator.GetBool("Shot"));
     }
     private IEnumerator DestroyBullet(GameObject Bullet, float delay)
     {

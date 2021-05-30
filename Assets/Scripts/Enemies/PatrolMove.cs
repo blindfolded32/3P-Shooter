@@ -15,7 +15,7 @@ public class PatrolMove : MonoBehaviour
 
     void Start()
     {
-      //  waypoints[0].position = gameObject.transform.position;
+       waypoints[0].position = gameObject.transform.position;
         navMeshAgent.SetDestination(waypoints[0].position);
         _animator = gameObject.GetComponentInChildren<Animator>();
         _playerPosition = GameObject.FindGameObjectWithTag("Player").transform;
@@ -24,10 +24,12 @@ public class PatrolMove : MonoBehaviour
 
     void Update()
     {
-       Goto();
+        if (waypoints.Length < 2) navMeshAgent.SetDestination(_playerPosition.position);
+       else Goto();
+
         if (Vector3.Distance(transform.position, _playerPosition.position) < 300 * navMeshAgent.radius)
         {
-            if (gameObject.tag == "MeleeEnemy") MelleeBeh();
+            if (gameObject.CompareTag("MeleeEnemy")) MelleeBeh();
             else RangeBeh();
         }
         
@@ -57,17 +59,9 @@ public class PatrolMove : MonoBehaviour
 
     void MelleeBeh()
     {   
-            //print("I see you " + gameObject.name);
             navMeshAgent.SetDestination(_playerPosition.position);
-            if (Vector3.Distance(transform.position, _playerPosition.position) <= 100) //* navMeshAgent.radius )
-            {
-            gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
-           // print(_animator.GetBool("Attack")+ "name"+ _animator.name);
-               
-                //  GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(0);
-            }
-        //print(_animator.GetBool("Attack"));
-        else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
+            if (Vector3.Distance(transform.position, _playerPosition.position) <= 100) gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
+            else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
 
     }
 }

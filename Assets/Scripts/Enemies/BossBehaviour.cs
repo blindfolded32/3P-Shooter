@@ -100,7 +100,7 @@ public class BossBehaviour : MonoBehaviour
         _spawned = false;
         if (Vector3.Distance(transform.position, _playerPosition.position) <= _minDistance + 5)
         {
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(15);
+        //    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TakeDamage(15);
         }
     }
     private void Shoot()
@@ -126,7 +126,7 @@ public class BossBehaviour : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bullet")
+        if (other.CompareTag("Bullet"))
         {
             HP -= 4;
             print("Boss HP " +HP);
