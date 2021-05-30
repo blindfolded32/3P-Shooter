@@ -349,6 +349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3751687035468500284}
   - component: {fileID: 6022166711337747056}
+  - component: {fileID: 8612862962398573058}
   m_Layer: 0
   m_Name: Joint
   m_TagString: Untagged
@@ -390,6 +391,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8612862962398573058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2484733537113578030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a720e359f70590d40a7522fca2da18ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weapon: {fileID: 8133543429019334824}
+  FireRate: 0.8
 --- !u!1 &2891355719076475521
 GameObject:
   m_ObjectHideFlags: 0
@@ -485,7 +500,6 @@ GameObject:
   - component: {fileID: 1332432726931747581}
   - component: {fileID: 5967861733445799747}
   - component: {fileID: 4026789151021661169}
-  - component: {fileID: -2493207925992845367}
   m_Layer: 0
   m_Name: Melee
   m_TagString: MeleeEnemy
@@ -600,20 +614,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
---- !u!114 &-2493207925992845367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2891355719432599005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a720e359f70590d40a7522fca2da18ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weapon: {fileID: 8133543429019334824}
-  FireRate: 0.8
 --- !u!1 &2891355719876490675
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1178,7 @@ GameObject:
   - component: {fileID: 3759109556861573548}
   - component: {fileID: 1260640116171580510}
   - component: {fileID: 5049953437978896242}
+  - component: {fileID: 1916826683304514798}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -1262,6 +1263,22 @@ CapsuleCollider:
   m_Height: 2.5592296
   m_Direction: 1
   m_Center: {x: -0.36114472, y: 0.29368412, z: -0.34689042}
+--- !u!54 &1916826683304514798
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8133543429019334824}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8294613645980033607
 GameObject:
   m_ObjectHideFlags: 0
