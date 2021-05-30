@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
 
     public HealthBar healthBar;
+    public AmmoText ammoText;
     //
     private Rigidbody PlayerRB;
     private int _maxHP = 100;    
@@ -25,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         _currentHP = _maxHP;
         _currentAmmo = 100;
         healthBar.SetMaxHealth(_maxHP);
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
     }
     void Start()
     {
@@ -78,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
     public void GetAmmo(int bullet)
     {
         _currentAmmo += bullet;
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
     }
     public void RestoreHP(int HP)
     {
@@ -96,14 +99,18 @@ public class PlayerMovement : MonoBehaviour
             Bullet.GetComponent<Rigidbody>().AddForce(Spawner.forward * BulletSpeed, ForceMode.Impulse);
             StartCoroutine(DestroyBullet(Bullet, LifeTime));
             _bulletsIn--;
-            _currentAmmo--;
+            
             if (_bulletsIn == 0)
             {
                 NextShot += 2;
                 _bulletsIn = 10;
+                _currentAmmo-=10;
             }
             _animator.SetBool("Shot", false);
         }
+        
+        ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
+        
     }
     private IEnumerator DestroyBullet(GameObject Bullet, float delay)
     {
