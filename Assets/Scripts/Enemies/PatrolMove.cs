@@ -60,8 +60,12 @@ public class PatrolMove : MonoBehaviour
     void MelleeBeh()
     {   
             navMeshAgent.SetDestination(_playerPosition.position);
-            if (Vector3.Distance(transform.position, _playerPosition.position) <= 100) gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
-            else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
+        if (Vector3.Distance(transform.position, _playerPosition.position) <= 100)
+        {
+            gameObject.GetComponentInChildren<Animator>().SetBool("Attack", true);
+            navMeshAgent.stoppingDistance = 30;
+        }
+        else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
 
     }
 }

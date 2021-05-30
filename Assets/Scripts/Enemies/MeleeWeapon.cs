@@ -8,20 +8,23 @@ public class MeleeWeapon : MonoBehaviour
     private float NextShot;
     public float FireRate = 0.8f;
     private GameObject _player;
+   
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+    
     }
     private void OnTriggerEnter(Collider other)
     {
+        print(other.tag);
         if (other.tag == "Player")
         {
             Strike();
         }
     }
-
-    void Strike()
+    public void Strike()
     {
+        
         if (Time.time > FireRate + NextShot)
         {
             NextShot = Time.time + FireRate;
