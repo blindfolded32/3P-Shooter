@@ -6402,8 +6402,8 @@ MonoBehaviour:
   fadeDuration: 1
   displayImageDuration: 1
   player: {fileID: 443696010}
-  WinImage: {fileID: 0}
-  LostImage: {fileID: 0}
+  WinImage: {fileID: 1913769925}
+  LostImage: {fileID: 1655429407}
 --- !u!4 &705752607
 Transform:
   m_ObjectHideFlags: 0
@@ -10891,8 +10891,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -294.996, y: -114.28769}
-  m_SizeDelta: {x: -590, y: -228.575}
+  m_AnchoredPosition: {x: -237.48285, y: -124.20374}
+  m_SizeDelta: {x: -474.9738, y: -248.4071}
   m_Pivot: {x: 0.49999997, y: 0.50000006}
 --- !u!114 &1276063599
 MonoBehaviour:
