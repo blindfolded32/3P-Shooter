@@ -19,6 +19,7 @@ TagManager:
   - LavaFloor
   - HighGround
   - Ball
+  - Boss
   layers:
   - Default
   - TransparentFX
