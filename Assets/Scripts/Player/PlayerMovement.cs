@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform Spawner;
     public float BulletSpeed, LifeTime, NextShot, FireRate, ReloadTime;
     private int _bulletsIn = 10;
+
+    private bool stopped = false;
     //
     private void Awake()
     {
@@ -38,14 +40,17 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()  
     {
-        Movement();  
-        if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
+        if (stopped) return;
+        else
         {
-            _animator.SetBool("Shot", true);
-            NextShot = Time.time + FireRate;
-            print(_animator.GetBool("Shot"));
+            Movement();
+            if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
+            {
+                _animator.SetBool("Shot", true);
+                NextShot = Time.time + FireRate;
+                print(_animator.GetBool("Shot"));
+            }
         }
-        
     }
     private void Movement()
     {
@@ -117,5 +122,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(Bullet);
     }
+
+    public bool Stop(bool value) => stopped = value;
 
 }

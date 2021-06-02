@@ -11,7 +11,7 @@ public class VolumePanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        VolumeToText.text = VolumeSlider.value.ToString();
     }
 
     // Update is called once per frame
