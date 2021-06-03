@@ -3699,7 +3699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.072727285}
   m_AnchorMax: {x: 0.224, y: 0.18163636}
-  m_AnchoredPosition: {x: -0.24751282, y: 0.0055999756}
+  m_AnchoredPosition: {x: -0.24749756, y: 0.0055999756}
   m_SizeDelta: {x: 0.49501002, y: -0.98880005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &310445741
@@ -4634,19 +4634,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8137281786601131191, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
   m_PrefabInstance: {fileID: 8137281785788742028}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &443696017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 443696010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdbddcf624f8dab4ebdcf833fb5b808e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Menu: {fileID: 1551826665}
 --- !u!1001 &447634474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7246,6 +7233,7 @@ MonoBehaviour:
   VolumeSlider: {fileID: 566020860}
   MuteToggle: {fileID: 213297441}
   VolumeToText: {fileID: 1013205017}
+  mixer: {fileID: 24100000, guid: 2a686051b3c0372418aa65c08d327740, type: 2}
 --- !u!114 &722127240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13147,7 +13135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1388431793}
   - component: {fileID: 1388431792}
-  - component: {fileID: 1388431791}
   - component: {fileID: 1388431790}
   m_Layer: 0
   m_Name: MainCamera
@@ -13174,14 +13161,6 @@ MonoBehaviour:
   speedy: 60
   minDistance: 1.5
   hideDistance: 2
---- !u!81 &1388431791
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388431789}
-  m_Enabled: 1
 --- !u!20 &1388431792
 Camera:
   m_ObjectHideFlags: 0
@@ -21440,6 +21419,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 443696017, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
+      propertyPath: Menu
+      value: 
+      objectReference: {fileID: 1551826665}
+    - target: {fileID: 443696019, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2a686051b3c0372418aa65c08d327740, type: 2}
     - target: {fileID: 8137281786601131185, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: ammoText
       value: 
@@ -21495,10 +21482,6 @@ PrefabInstance:
     - target: {fileID: 8137281786601131191, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8137281786601131212, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 916a6cc61efab114b97df159bd60cf23, type: 3}

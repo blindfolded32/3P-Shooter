@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     private int _bulletsIn = 10;
 
     private bool stopped = false;
+    private AudioSource _stepSound;
     //
     private void Awake()
     {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         _currentAmmo = 100;
         healthBar.SetMaxHealth(_maxHP);
         ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
+        _stepSound = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -54,10 +56,11 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+        _stepSound.Play();
         if (_MovementControl.isGrounded)
         {
             _animator.SetBool("Move", true);
-           
+            
             _MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             _MoveDirection = transform.TransformDirection(_MoveDirection) * -1;
             _MoveDirection *= MoveSpeed;

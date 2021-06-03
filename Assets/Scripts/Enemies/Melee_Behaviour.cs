@@ -7,9 +7,16 @@ public class Melee_Behaviour : MonoBehaviour
     public float HP=100;
     public GameObject HP_Pack,Ammo_pack;
     public Transform Spawner;
-public void TakeDamage(int damage)
+    private ParticleSystem _particle;
+
+    private void Awake()
+    {
+        _particle = GetComponent<ParticleSystem>();
+    }
+    public void TakeDamage(int damage)
     {
         HP -= damage;
+        _particle.Play();
         if (HP <= 0)
         {
             Destroy(gameObject);
