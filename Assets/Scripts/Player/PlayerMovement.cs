@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform Spawner;
     public float BulletSpeed, LifeTime, NextShot, FireRate, ReloadTime;
     private int _bulletsIn = 10;
+
+    private bool stopped = false;
+    private AudioSource _stepSound;
     //
     private void Awake()
     {
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         _currentAmmo = 100;
         healthBar.SetMaxHealth(_maxHP);
         ammoText.PrintAmmo(_bulletsIn, _currentAmmo);
+        _stepSound = GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -38,21 +42,25 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()  
     {
-        Movement();  
-        if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
+        if (stopped) return;
+        else
         {
-            _animator.SetBool("Shot", true);
-            NextShot = Time.time + FireRate;
-            print(_animator.GetBool("Shot"));
+            Movement();
+            if (Input.GetKeyDown(KeyCode.F) && Time.time > NextShot)
+            {
+                _animator.SetBool("Shot", true);
+                NextShot = Time.time + FireRate;
+                print(_animator.GetBool("Shot"));
+            }
         }
-        
     }
     private void Movement()
     {
+        _stepSound.Play();
         if (_MovementControl.isGrounded)
         {
             _animator.SetBool("Move", true);
-           
+            
             _MoveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             _MoveDirection = transform.TransformDirection(_MoveDirection) * -1;
             _MoveDirection *= MoveSpeed;
@@ -117,5 +125,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(delay);
         Destroy(Bullet);
     }
+
+    public bool Stop(bool value) => stopped = value;
 
 }

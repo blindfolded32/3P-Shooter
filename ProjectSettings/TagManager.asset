@@ -20,6 +20,7 @@ TagManager:
   - HighGround
   - Ball
   - Boss
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class PatrolMove : MonoBehaviour
     private Transform _playerPosition;
     private Animator _animator;
     private int HGMask;
+    private bool stopped = false;
 
     int m_CurrentWaypointIndex;
 
@@ -24,15 +25,19 @@ public class PatrolMove : MonoBehaviour
 
     void Update()
     {
-        if (waypoints.Length < 2) navMeshAgent.SetDestination(_playerPosition.position);
-       else Goto();
+        if (stopped)  return; 
 
-        if (Vector3.Distance(transform.position, _playerPosition.position) < 300 * navMeshAgent.radius)
+        else
         {
-            if (gameObject.CompareTag("MeleeEnemy")) MelleeBeh();
-            else RangeBeh();
+            if (waypoints.Length < 2) navMeshAgent.SetDestination(_playerPosition.position);
+            else Goto();
+
+            if (Vector3.Distance(transform.position, _playerPosition.position) < 300 * navMeshAgent.radius)
+            {
+                if (gameObject.CompareTag("MeleeEnemy")) MelleeBeh();
+                else RangeBeh();
+            }
         }
-        
     }
 
     void Goto()
@@ -68,4 +73,8 @@ public class PatrolMove : MonoBehaviour
         else gameObject.GetComponentInChildren<Animator>().SetBool("Attack", false);
 
     }
+
+    public bool Stop(bool value) => stopped = value;
+    
+
 }

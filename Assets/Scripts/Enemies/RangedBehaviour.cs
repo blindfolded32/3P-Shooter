@@ -9,11 +9,13 @@ public class RangedBehaviour : MonoBehaviour
     public GameObject Ammo_pack;
     public Transform Spawner;
     private float _speed = 2;
+
     private Transform _playerPosition;
     private Animator _animator;
     public GameObject BulletPrefab;
     public Transform bulletSpawner;
     public GameObject WeaponPrefab;
+    private ParticleSystem _particle;
 
     public float BulletSpeed, LifeTime, NextShot, FireRate, _fireDistance;
    
@@ -22,6 +24,7 @@ public class RangedBehaviour : MonoBehaviour
     {
         _currentHP = 100;
         _bulletsLeft = 15;
+        _particle = GetComponent<ParticleSystem>();
     }
     void Start()
     {
@@ -29,18 +32,6 @@ public class RangedBehaviour : MonoBehaviour
         _animator = gameObject.GetComponent<Animator>();
        //_HighPos = GameObject.FindGameObjectWithTag("HighGround").transform;
    
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-
-        if (other.tag == "Bullet") _currentHP -= 10;
-
-        if (_currentHP <= 0)
-        {
-           // print("ouch");
-            Destroy(gameObject);
-            PackSpawn();
-        }
     }
     void Update()
     {
@@ -92,5 +83,16 @@ public class RangedBehaviour : MonoBehaviour
         GameObject Ammo = Instantiate(Ammo_pack);
         HP.transform.position = Spawner.position;
         Ammo.transform.position = Spawner.position + (Vector3.one * 2);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _currentHP -= damage;
+        _particle.Play();
+        if (_currentHP <= 0)
+        {
+            Destroy(gameObject);
+            PackSpawn();
+        }
     }
 }
